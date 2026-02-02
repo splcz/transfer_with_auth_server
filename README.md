@@ -33,14 +33,26 @@ npm install
 | 开发环境 | `.env.development` | development |
 | 生产环境 | `.env.production` | production |
 
-复制示例文件并填写配置：
+创建对应环境的配置文件：
 
 ```bash
-# 开发环境
-cp .env.development.example .env.development
+# 开发环境（Sepolia 测试网）
+cat > .env.development << 'EOF'
+PORT=3001
+RPC_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_API_KEY
+RELAYER_PRIVATE_KEY=0x...
+FRONTEND_URL=http://localhost:5173
+CHAIN_ID=11155111
+EOF
 
-# 生产环境
-cp .env.production.example .env.production
+# 生产环境（Ethereum Mainnet）
+cat > .env.production << 'EOF'
+PORT=3001
+RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_API_KEY
+RELAYER_PRIVATE_KEY=0x...
+FRONTEND_URL=https://transfer-with-auth-web.vercel.app
+CHAIN_ID=1
+EOF
 ```
 
 环境变量说明：
